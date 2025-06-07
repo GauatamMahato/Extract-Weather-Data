@@ -36,14 +36,14 @@ Execute the script:
 python weather_extractor.py  
 📋 Example Usage
 1. Fetch Weather for a Specific City
-python
+
 Enter City: london  
 Temperature: 18 °C  
 Weather: Cloudy  
 Wind: 12 km/h  
 Humidity: 65 %  
 2. Auto-Detect Your Location's Weather
-plaintext
+
 Current Location: Tokyo  
 Weather report: Tokyo  
 
@@ -54,14 +54,14 @@ Weather report: Tokyo
       /   \    0.2 mm  
 🧩 Code Snippets
 Fetching Weather Data
-python
+
 import requests  
 city = input("Enter City: ")  
 response = requests.get(f"https://wttr.in/{city}?format=j1")  
 data = response.json()  
 print("Temperature:", data['current_condition'][0]['temp_C'], "°C")  
 Auto-Detecting Location
-python
+
 res = requests.get('https://ipinfo.io/')  
 city = res.json()['city']  
 print("Current Location:", city)  
