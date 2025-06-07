@@ -1,60 +1,86 @@
-Weather Data Extraction Tool
-A Python-based application that fetches real-time weather data for any city or the user's current location using public APIs. The tool retrieves key weather metrics (temperature, humidity, wind speed, and conditions) and displays them in a structured format.
 
-Features
-City-Specific Weather: Enter a city name to get its current weather details.
+# 🌦️ Weather Data Extraction Tool  
 
-Auto-Detection: Automatically fetches weather for the user's location using IP geolocation.
+*A Python script to fetch real-time weather data for any city or your current location using public APIs.*  
 
-Multi-Day Forecast: Displays a detailed 3-day forecast with temperature ranges, wind speed, and conditions.
+---
 
-User-Friendly Output: Presents data in a clean, readable format (text-based or JSON).
+## 📌 Features  
+- **City-based weather lookup**: Enter a city name to get temperature, humidity, wind speed, and conditions.  
+- **Auto-location detection**: Fetches weather for your current location using IP geolocation.  
+- **Multi-day forecast**: Shows a 3-day forecast with detailed time segments (morning/noon/evening/night).  
+- **Clean output**: Displays data in both structured text and JSON formats.  
 
-Technologies Used
-Python (Requests library for API calls)
+---
 
-wttr.in API (Weather data)
+## 🛠️ Technologies Used  
+- **Python 3**  
+- `requests` library (HTTP API calls)  
+- [wttr.in API](https://wttr.in) (Weather data)  
+- [ipinfo.io API](https://ipinfo.io) (Geolocation)  
 
-ipinfo.io API (Geolocation)
+---
 
-JSON Parsing (Handling API responses)
+## 🚀 How to Run  
+1. Clone the repository:  
+   ```bash  
+   git clone https://github.com/your-username/weather-data-extractor.git  
+   cd weather-data-extractor  
+Install dependencies:
 
-How It Works
-The user inputs a city name or allows the script to detect their location.
 
-The tool queries wttr.in for weather data and ipinfo.io for geolocation (if needed).
-
-The response is parsed and displayed as:
-
-Current weather (temperature, humidity, wind, conditions).
-
-3-day forecast with time-specific details.
-
-Installation & Usage
-git clone https://github.com/your-username/weather-data-extractor.git  
-cd weather-data-extractor  
 pip install requests  
+Execute the script:
+
+
 python weather_extractor.py  
+📋 Example Usage
+1. Fetch Weather for a Specific City
+python
+Enter City: london  
+Temperature: 18 °C  
+Weather: Cloudy  
+Wind: 12 km/h  
+Humidity: 65 %  
+2. Auto-Detect Your Location's Weather
+plaintext
+Current Location: Tokyo  
+Weather report: Tokyo  
 
-Example Output
-Enter City: delhi  
-Temperature: 39 °C  
-Weather: Haze  
-Wind: 5 km/h  
-Humidity: 28 %  
+                Light Rain  
+       .-.      +22(21) °C  
+    ― (   ) ―   ↗ 8 km/h  
+       `-’     10 km  
+      /   \    0.2 mm  
+🧩 Code Snippets
+Fetching Weather Data
+python
+import requests  
+city = input("Enter City: ")  
+response = requests.get(f"https://wttr.in/{city}?format=j1")  
+data = response.json()  
+print("Temperature:", data['current_condition'][0]['temp_C'], "°C")  
+Auto-Detecting Location
+python
+res = requests.get('https://ipinfo.io/')  
+city = res.json()['city']  
+print("Current Location:", city)  
+📂 Project Structure
 
-Use Cases
-Personal weather checks via CLI.
+weather-data-extractor/  
+├── weather_extractor.py  # Main script  
+├── README.md             # Documentation  
+└── requirements.txt      # Dependencies  
+🤝 Contribute
+Fork the repo, add features (e.g., GUI, SMS alerts), and submit a PR!
 
-Integration into larger apps (e.g., travel planners, event schedulers).
+Report bugs/issues here.
 
-Learning API interaction and JSON handling in Python.
+✨ Built with Python for API and data enthusiasts.
 
-Why This Project?
-Demonstrates API integration and data parsing skills.
 
-Shows ability to build user-interactive CLI tools.
-
-Easy to extend (e.g., add GUI, SMS alerts, or historical data analysis).
-
-🔗 Try it out! Contribute or fork to enhance functionality.
+### Key Notes:  
+1. Replace `your-username` with your GitHub username.  
+2. For a **requirements.txt** file, add:  
+   ```plaintext  
+   requests==2.31.0  
